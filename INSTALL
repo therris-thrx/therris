@@ -1,0 +1,9 @@
+Building Therris
+
+See doc/readme-qt.rst for instructions on building Therris QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Therris.
+
+See doc/build-*.txt for instructions on building Therrisd,
+the intended-for-services, no-graphical-interface, reference
+implementation of Therris.
