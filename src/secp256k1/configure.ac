@@ -2,7 +2,7 @@ AC_PREREQ([2.60])
 AC_INIT([libsecp256k1],[0.1])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
-AC_CANONTHRXAL_HOST
+AC_CANONICAL_HOST
 AH_TOP([#ifndef LIBSECP256K1_CONFIG_H])
 AH_TOP([#define LIBSECP256K1_CONFIG_H])
 AH_BOTTOM([#endif /*LIBSECP256K1_CONFIG_H*/])
@@ -333,7 +333,7 @@ if test x"$use_endomorphism" = x"yes"; then
 fi
 
 if test x"$use_ecmult_static_precomputation" = x"yes"; then
-  AC_DEFINE(USE_ECMULT_STATTHRX_PRECOMPUTATION, 1, [Define this symbol to use a statically generated ecmult table])
+  AC_DEFINE(USE_ECMULT_STATIC_PRECOMPUTATION, 1, [Define this symbol to use a statically generated ecmult table])
 fi
 
 if test x"$enable_module_ecdh" = x"yes"; then
@@ -350,20 +350,20 @@ fi
 
 AC_C_BIGENDIAN()
 
-AC_MSG_NOTTHRXE([Using assembly optimizations: $set_asm])
-AC_MSG_NOTTHRXE([Using field implementation: $set_field])
-AC_MSG_NOTTHRXE([Using bignum implementation: $set_bignum])
-AC_MSG_NOTTHRXE([Using scalar implementation: $set_scalar])
-AC_MSG_NOTTHRXE([Using endomorphism optimizations: $use_endomorphism])
-AC_MSG_NOTTHRXE([Building ECDSA pubkey recovery module: $enable_module_recovery])
+AC_MSG_NOTICE([Using assembly optimizations: $set_asm])
+AC_MSG_NOTICE([Using field implementation: $set_field])
+AC_MSG_NOTICE([Using bignum implementation: $set_bignum])
+AC_MSG_NOTICE([Using scalar implementation: $set_scalar])
+AC_MSG_NOTICE([Using endomorphism optimizations: $use_endomorphism])
+AC_MSG_NOTICE([Building ECDSA pubkey recovery module: $enable_module_recovery])
 
 if test x"$enable_experimental" = x"yes"; then
-  AC_MSG_NOTTHRXE([******])
-  AC_MSG_NOTTHRXE([WARNING: experimental build])
-  AC_MSG_NOTTHRXE([Experimental features do not have stable APIs or properties, and may not be safe for production use.])
-  AC_MSG_NOTTHRXE([Building ECDH module: $enable_module_ecdh])
-  AC_MSG_NOTTHRXE([Building Schnorr signatures module: $enable_module_schnorr])
-  AC_MSG_NOTTHRXE([******])
+  AC_MSG_NOTICE([******])
+  AC_MSG_NOTICE([WARNING: experimental build])
+  AC_MSG_NOTICE([Experimental features do not have stable APIs or properties, and may not be safe for production use.])
+  AC_MSG_NOTICE([Building ECDH module: $enable_module_ecdh])
+  AC_MSG_NOTICE([Building Schnorr signatures module: $enable_module_schnorr])
+  AC_MSG_NOTICE([******])
 else
   if test x"$enable_module_schnorr" = x"yes"; then
     AC_MSG_ERROR([Schnorr signature module is experimental. Use --enable-experimental to allow.])
@@ -381,7 +381,7 @@ AC_SUBST(SECP_TEST_LIBS)
 AC_SUBST(SECP_TEST_INCLUDES)
 AM_CONDITIONAL([USE_TESTS], [test x"$use_tests" != x"no"])
 AM_CONDITIONAL([USE_BENCHMARK], [test x"$use_benchmark" = x"yes"])
-AM_CONDITIONAL([USE_ECMULT_STATTHRX_PRECOMPUTATION], [test x"$use_ecmult_static_precomputation" = x"yes"])
+AM_CONDITIONAL([USE_ECMULT_STATIC_PRECOMPUTATION], [test x"$use_ecmult_static_precomputation" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_ECDH], [test x"$enable_module_ecdh" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_SCHNORR], [test x"$enable_module_schnorr" = x"yes"])
 AM_CONDITIONAL([ENABLE_MODULE_RECOVERY], [test x"$enable_module_recovery" = x"yes"])
